@@ -78,6 +78,12 @@ public class Principal extends PApplet {
             int y2 = tour.get((it2+1)%tour.size()).y;
             stroke( 169, 50, 38 ); //Color de línea: rojo
             line(x1,y1,x2,y2);
+            
+            int xm = (x1+x2)/2;
+            int ym = (y1+y2)/2;
+            float peso = (float)ejemplar.matriz[tour.get(it2).name][tour.get((it2+1)%tour.size()).name];
+            text(peso,xm,ym);
+            
             it2++;
         }
     }
