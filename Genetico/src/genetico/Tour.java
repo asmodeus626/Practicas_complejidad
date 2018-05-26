@@ -12,9 +12,37 @@ import java.util.Random;
  */
 public class Tour {
     LinkedList<Integer> ciudades;
+    int costoTotal; //Guarda el costo del tour.
     
     public Tour(){
         ciudades = new LinkedList();
+    }
+    
+    public Tour(Tour t2){
+        costoTotal = t2.costoTotal;
+        ciudades = new LinkedList();
+        ciudades.addAll(t2.ciudades);
+    }
+    
+    public Tour(int[] arr){
+        ciudades = new LinkedList();
+        for(int i=0;i<arr.length;i++){
+            ciudades.add(arr[i]);
+        }
+    }
+    
+    /**
+     * Recibe un tour y lo copia a este.
+     * @param t2 tour a copiar
+     */
+    public void copia(Tour t2){
+        ciudades.clear();
+        ciudades.addAll(t2.ciudades);
+        costoTotal = t2.costoTotal;
+    }
+    
+    public void setCosto(int c){
+        costoTotal = c;
     }
     
     /**
@@ -36,10 +64,8 @@ public class Tour {
         }
     }
     
-    public static void main(String[] args){
-        Tour t1 = new Tour();
-        t1.genTourAl(51);
-        
-        System.out.println(t1.ciudades);
+    @Override
+    public String toString(){
+        return ciudades.toString();
     }
 }

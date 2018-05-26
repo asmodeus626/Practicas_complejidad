@@ -16,6 +16,7 @@ import java.util.LinkedList;
 public class Pesos {
    LinkedList<String> lineas; //Lista que guarda las líneas del archivo pesos.txt
    int[][] distancias; //matriz que guarda las distancias entre las ciudades.
+   int pesoMax=0;
    
    public Pesos(){
        lineas = new LinkedList();
@@ -63,17 +64,14 @@ public class Pesos {
                distancias[i][j]=distancias[j][i];
            }
        }
-   }
-   
-   public static void main(String[] args){
-       Pesos p1 = new Pesos();
-       p1.llenarMatriz();
        
-       for(int i=0;i<p1.distancias.length;i++){
-           for(int j=0;j<p1.distancias.length;j++){
-               System.out.print(p1.distancias[i][j]+" ");
+       //ahora calculamos el peso máximo.
+       for(int i=0;i<distancias.length;i++){
+           for(int j=0;j<distancias.length;j++){
+               if(pesoMax<distancias[i][j]){
+                   pesoMax = distancias[i][j];
+               }
            }
-           System.out.println();
        }
    }
 }
